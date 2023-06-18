@@ -40,9 +40,9 @@ public class WebSecurityConfig {
     	 http.
     	     authorizeHttpRequests(auth -> auth
     	    		 .requestMatchers("/register").permitAll()
-    	             .requestMatchers("/admin/**").hasRole("ADMIN")
-    	             .requestMatchers("/seller/**").hasRole("SELLER")
-    	             .requestMatchers("/buyer/**").hasRole("BUYER")
+//    	             .requestMatchers("/admin/**").hasRole("ADMIN")
+//    	             .requestMatchers("/seller/**").hasRole("SELLER")
+//    	             .requestMatchers("/buyer/**").hasRole("BUYER")
     	             .anyRequest().authenticated()
     	    		 
     	    		 )
