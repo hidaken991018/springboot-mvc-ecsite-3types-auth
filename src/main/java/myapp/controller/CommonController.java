@@ -6,16 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class ViewController {
+public class CommonController {
     
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login () {
         return "login";
     }
     
-    @GetMapping("/auth_select")
+    @GetMapping("auth_select")
     public String auth_select() {
     	return "auth_select";
     }
+    
+    
 }
 
