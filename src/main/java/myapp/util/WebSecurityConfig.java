@@ -1,4 +1,4 @@
-package myapp.common;
+package myapp.util;
 
 
 import org.springframework.context.annotation.Bean;
