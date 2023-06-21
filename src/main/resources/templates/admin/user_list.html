@@ -14,13 +14,13 @@
 			<img src="/img/icon _menu_.png"></img>
 		</button>
 		<p id="text">TechYouth</p>
-		<button class="header_icon">
+		<button class="header_icon popup_btn">
 			<img src="/img/icon _home_.png"></img>
 		</button>
 	</header>
 	<main class="main">
 		<h1 class="title">ユーザ一覧</h1>
-		<ul>
+		<ul id="scroll" data-max="20" data-lastnum="8">
 			<li>
 				<p>No.1</p>
 				<p>山田太郎</p>
@@ -62,6 +62,24 @@
 				<p>2000.10.10生まれ</p>
 			</li>
 		</ul>
+		<div class="popup" id="popup">
+
+			<div class="popup_overlay"> </div>
+			<div class="popup_body">
+				<div class="popup_personal">
+					<p>No.1</p>
+					<p>山田　太郎</p>
+					<p>やまだ　たろう</p>
+					<p>2000.10.10生</p>
+
+				</div>
+				<div class="popup_buttons">
+					<a href="#">アカウント情報変更</a>
+					<button>ログイン</button>
+				</div>
+			</div>
+
+		</div>
 
 	</main>
 	<script type="text/javascript" src="/js/admin/user_list.js"></script>
