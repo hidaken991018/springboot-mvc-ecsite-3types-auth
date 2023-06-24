@@ -2,27 +2,28 @@ package myapp.Hello;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
-@Repository
-public class HelloRepository {
+@Mapper
+public interface HelloMapper {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	//	@Autowired
+	//	private JdbcTemplate jdbcTemplate;
 
-	public Map<String, Object> fingById(String id) {
+	//	public Map<String, Object> findById(String id);
+	//	{
+	//
+	//		//SELECT文
+	//		String query = "SELECT * "
+	//				+ "FROM employee "
+	//				+ "WHERE id=? ";
+	//
+	//		//検索実行
+	//		Map<String, Object> employee = jdbcTemplate.queryForMap(query, id);
+	//
+	//		return employee;
+	//	}
 
-		//SELECT文
-		String query = "SELECT * "
-				+ "FROM employee "
-				+ "WHERE id=? ";
-
-		//検索実行
-		Map<String, Object> employee = jdbcTemplate.queryForMap(query, id);
-
-		return employee;
-	}
+	public Map<String, Object> findById(String id);
 
 }

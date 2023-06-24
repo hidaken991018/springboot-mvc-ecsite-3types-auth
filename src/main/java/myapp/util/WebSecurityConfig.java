@@ -11,26 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-	//
-	//
-	//    @Autowired
-	////    private UserDetailsServiceImpl userDetailsService;
-	//
-	//    //フォームの値と比較するDBから取得したパスワードは暗号化されているのでフォームの値も暗号化するために利用
-	//    @Bean
-	//    public BCryptPasswordEncoder passwordEncoder() {
-	//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-	//        return bCryptPasswordEncoder;
-	//    }
-
-	//    
-	//    @Bean
-	//    public WebSecurityCustomizer webSecurityCustomizer() {
-	//        return web -> web.ignoring()
-	//        		.requestMatchers(
-	//        				"/css/**","/js/**","/img/**");
-	//        
-	//    }
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
