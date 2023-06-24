@@ -10,12 +10,12 @@ public class CommonController {
 
 	@GetMapping("login")
 	public String login() {
-		return "login";
+		return "common/login";
 	}
 
 	@GetMapping("auth_select")
 	public String auth_select() {
-		return "auth_select";
+		return "common/auth_select";
 	}
 
 }
