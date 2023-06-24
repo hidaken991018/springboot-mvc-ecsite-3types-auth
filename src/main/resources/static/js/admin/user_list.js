@@ -4,12 +4,12 @@ import { fetchWrapper } from "../util/fetchWrapper.js"
  * クリック時対象の色を変化させる。
  */
 function changeColorOnClick(id, color) {
-	//idが一致する要素を取得する。
-	const text = document.getElementById(id)
-	//対象の要素が押されたときに色を変化させる。
-	text.addEventListener("click", () => {
-		text.style.color = color
-	})
+  //idが一致する要素を取得する。
+  const text = document.getElementById(id)
+  //対象の要素が押されたときに色を変化させる。
+  text.addEventListener("click", () => {
+    text.style.color = color
+  })
 }
 
 /**
@@ -18,41 +18,41 @@ function changeColorOnClick(id, color) {
  * @param num 作成する要素の数
  */
 function createList(userList) {
-	let parentFragment = document.createDocumentFragment()
+  let parentFragment = document.createDocumentFragment()
 
-	for (let i = 0; i < userList.length ; i++) {
+  for (let i = 0; i < userList.length; i++) {
 
-		// 一番親になる要素	
-		let li = document.createElement("li")
+    // 一番親になる要素	
+    let li = document.createElement("li")
 
-		// 3つのp要素をまとめるためのフラグメント
-		let childFragment = document.createDocumentFragment();
+    // 3つのp要素をまとめるためのフラグメント
+    let childFragment = document.createDocumentFragment();
 
-		//p要素を作成
-		let numberP = document.createElement("p")
-		let nameP = document.createElement("p")
-		let birthP = document.createElement("p")
+    //p要素を作成
+    let numberP = document.createElement("p")
+    let nameP = document.createElement("p")
+    let birthP = document.createElement("p")
 
-		//挿入するテキストを作成
-		const numberText = document.createTextNode(`No.${userList[i].id}`)
-		const nameText = document.createTextNode(userList[i].name)
-		const birthText = document.createTextNode("2000.10.10生")
+    //挿入するテキストを作成
+    const numberText = document.createTextNode(`No.${userList[i].id}`)
+    const nameText = document.createTextNode(userList[i].name)
+    const birthText = document.createTextNode("2000.10.10生")
 
-		// p要素にテキストを挿入
-		numberP.append(numberText)
-		nameP.append(nameText)
-		birthP.append(birthText)
+    // p要素にテキストを挿入
+    numberP.append(numberText)
+    nameP.append(nameText)
+    birthP.append(birthText)
 
-		// 3つのp要素
-		childFragment.append(numberP)
-		childFragment.append(nameP)
-		childFragment.append(birthP)
+    // 3つのp要素
+    childFragment.append(numberP)
+    childFragment.append(nameP)
+    childFragment.append(birthP)
 
-		li.append(childFragment)
-		parentFragment.append(li)
-	}
+    li.append(childFragment)
+    parentFragment.append(li)
+  }
 
-	return parentFragment
+  return parentFragment
 
 }
 
@@ -62,48 +62,48 @@ function createList(userList) {
  * @param add 追加する要素数
  */
 function infinitScroll(startRate, add) {
-	// スクロールを検知
-	window.addEventListener("scroll", async function() {
-		// ページの高さを取得		
-		const range = document.documentElement.scrollHeight - document.documentElement.clientHeight
+  // スクロールを検知
+  window.addEventListener("scroll", async function() {
+    // ページの高さを取得		
+    const range = document.documentElement.scrollHeight - document.documentElement.clientHeight
 
-		//現在位置を取得
-		const currentLocation = document.documentElement.scrollTop;
-		const heightRate = currentLocation / range
+    //現在位置を取得
+    const currentLocation = document.documentElement.scrollTop;
+    const heightRate = currentLocation / range
 
-		if (heightRate >= startRate) {
-			const list = document.querySelector("#scroll")
-		 const addUser = await fetchWrapper("/users");
-			list.append(createList(addUser));
-		}
-	})
+    if (heightRate >= startRate) {
+      const list = document.querySelector("#scroll")
+      const addUser = await fetchWrapper("/users");
+      list.append(createList(addUser));
+    }
+  })
 }
 
 /**
  * ポップアップの開閉
  */
 function popupOperation() {
-	// 開閉用のボタン
-	let popupButton = document.querySelector(".popup_btn")
-	popupButton.addEventListener("click", () => {
-		let popup = document.querySelector(".popup")
-		
-		// styleに値がないもしくはnoneの場合は"display:blovk"にそうでない場合はnoneに
-		if (popup.style.display == "none" || popup.style.display == "") {
-			popup.style.display = "block"
-		} else {
-			popup.style.display = "none"
-		}
+  // 開閉用のボタン
+  let popupButton = document.querySelector(".popup_btn")
+  popupButton.addEventListener("click", () => {
+    let popup = document.querySelector(".popup")
 
-	})
-	
-	//オーバーレイの部分
-	let overlay = document.querySelector(".popup_overlay")
-	overlay.addEventListener("click", () => {
-		let popup = document.querySelector(".popup")
-		//ポップアップをとじる
-		popup.style.display = "none"
-	})
+    // styleに値がないもしくはnoneの場合は"display:blovk"にそうでない場合はnoneに
+    if (popup.style.display == "none" || popup.style.display == "") {
+      popup.style.display = "block"
+    } else {
+      popup.style.display = "none"
+    }
+
+  })
+
+  //オーバーレイの部分
+  let overlay = document.querySelector(".popup_overlay")
+  overlay.addEventListener("click", () => {
+    let popup = document.querySelector(".popup")
+    //ポップアップをとじる
+    popup.style.display = "none"
+  })
 }
 
 
