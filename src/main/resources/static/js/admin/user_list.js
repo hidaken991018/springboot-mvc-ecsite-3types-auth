@@ -1,4 +1,4 @@
-
+import { fetchWrapper } from "../util/fetchWrapper.js"
 //処理の定義
 /**
  * クリック時対象の色を変化させる。
@@ -12,17 +12,15 @@ function changeColorOnClick(id, color) {
 	})
 }
 
-
-
 /**
  * 
  * ユーザ一覧の要素を作成する。
  * @param num 作成する要素の数
  */
-function createList(num) {
+function createList(userList) {
 	let parentFragment = document.createDocumentFragment()
 
-	for (i = 0; i <= num; i++) {
+	for (let i = 0; i < userList.length ; i++) {
 
 		// 一番親になる要素	
 		let li = document.createElement("li")
@@ -36,9 +34,9 @@ function createList(num) {
 		let birthP = document.createElement("p")
 
 		//挿入するテキストを作成
-		const numberText = document.createTextNode(`No.1`)
-		const nameText = document.createTextNode("山田太郎")
-		const birthText = document.createTextNode("2000.10.10")
+		const numberText = document.createTextNode(`No.${userList[i].id}`)
+		const nameText = document.createTextNode(userList[i].name)
+		const birthText = document.createTextNode("2000.10.10生")
 
 		// p要素にテキストを挿入
 		numberP.append(numberText)
@@ -58,15 +56,14 @@ function createList(num) {
 
 }
 
-
 /**
  * インフィニティスクロール
- * @param starRatet 処理実行位置（高さ）
- * @param add つ化する要素数
+ * @param starRate 処理実行位置（高さ）
+ * @param add 追加する要素数
  */
 function infinitScroll(startRate, add) {
 	// スクロールを検知
-	window.addEventListener("scroll", function() {
+	window.addEventListener("scroll", async function() {
 		// ページの高さを取得		
 		const range = document.documentElement.scrollHeight - document.documentElement.clientHeight
 
@@ -76,8 +73,8 @@ function infinitScroll(startRate, add) {
 
 		if (heightRate >= startRate) {
 			const list = document.querySelector("#scroll")
-			//実際はAPIからデータを取得する処理を記載する
-			list.append(createList(add))
+		 const addUser = await fetchWrapper("/users");
+			list.append(createList(addUser));
 		}
 	})
 }

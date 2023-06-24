@@ -39,6 +39,7 @@
 	list-style: none;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
 	padding: 21px 38px;
 
@@ -46,8 +47,6 @@
 	border-radius: 20px;
 	width: 670px;
 	height: 90px;
-	gap: 115px;
-
 }
 
 .main ul li p {
@@ -56,6 +55,7 @@
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 24px;
+	 white-space: nowrap
 
 }
 
