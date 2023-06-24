@@ -1,88 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<title>管理者権限：ユーザ一覧</title>
-	<link rel="stylesheet" href="/css/admin/user_list.css">
-	<link rel="stylesheet" href="/css/common/reset.css">
+  <meta charset="UTF-8">
+  <title>管理者権限：ユーザ一覧</title>
+  <link rel="stylesheet" href="/css/admin/user_list.css">
+  <link rel="stylesheet" href="/css/common/reset.css">
 </head>
 
 <body>
-	<header class="header">
-		<button class="header_icon">
-			<img src="/img/icon _menu_.png"></img>
-		</button>
-		<p id="text">TechYouth</p>
-		<button class="header_icon popup_btn">
-			<img src="/img/icon _home_.png"></img>
-		</button>
-	</header>
-	<main class="main">
-		<h1 class="title">ユーザ一覧</h1>
-		<ul id="scroll" data-max="20" data-lastnum="8">
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-			<li>
-				<p>No.1</p>
-				<p>山田太郎</p>
-				<p>2000.10.10生まれ</p>
-			</li>
-		</ul>
-		<div class="popup" id="popup">
+  <header class="header">
+    <button class="header_icon">
+      <img src="/img/icon _menu_.png"></img>
+    </button>
+    <p id="text">TechYouth</p>
+    <button class="header_icon popup_btn">
+      <img src="/img/icon _home_.png"></img>
+    </button>
+  </header>
+  <main class="main">
+    <h1 class="title">ユーザ一覧</h1>
 
-			<div class="popup_overlay"> </div>
-			<div class="popup_body">
-				<div class="popup_personal">
-					<p>No.1</p>
-					<p>山田　太郎</p>
-					<p>やまだ　たろう</p>
-					<p>2000.10.10生</p>
+    <ul id="scroll">
+      <!--liタグを繰り返し配置する際はth:eachを使用する。-->
+      <li th:each="user:${users}">
+        <p th:text="'No.' + ${user.index}"></p>
+        <p th:text="${user.name}"></p>
+        <p th:text="${user.birth} + '生'"></p>
+      </li>
+    </ul>
+    <div class="popup" id="popup">
 
-				</div>
-				<div class="popup_buttons">
-					<a href="#">アカウント情報変更</a>
-					<button>ログイン</button>
-				</div>
-			</div>
+      <div class="popup_overlay"> </div>
+      <div class="popup_body">
+        <div class="popup_personal">
+          <p>No.1</p>
+          <p>山田　太郎</p>
+          <p>やまだ　たろう</p>
+          <p>2000.10.10生</p>
 
-		</div>
+        </div>
+        <div class="popup_buttons">
+          <a href="#">アカウント情報変更</a>
+          <button>ログイン</button>
+        </div>
+      </div>
 
-	</main>
-	<script type="text/javascript" src="/js/admin/user_list.js"></script>
+    </div>
+
+  </main>
+  <script type="text/javascript" src="/js/admin/user_list.js"></script>
 </body>
 
 </html>
